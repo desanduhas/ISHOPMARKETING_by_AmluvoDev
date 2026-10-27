@@ -189,6 +189,21 @@ export default function App() {
     <div className="site-shell">
       {splashVisible && (
         <div className={`splash-screen ${splashExiting ? 'splash-exit' : ''}`} role="status" aria-label="Loading I Shop Marketing">
+          <div className="site-skeleton" aria-hidden="true">
+            <div className="skeleton-nav">
+              <i />
+              <span /><span /><span />
+              <b />
+            </div>
+            <div className="skeleton-hero">
+              <div className="skeleton-copy">
+                <i /><strong /><strong /><strong /><span /><span /><b />
+              </div>
+              <div className="skeleton-card"><i /><span /><span /><b /></div>
+            </div>
+            <div className="skeleton-capabilities"><i /><i /><i /><i /><i /></div>
+            <div className="skeleton-stats"><i /><i /><i /><i /></div>
+          </div>
           <div className="splash-content">
             <p className="splash-eyebrow">CREATIVE · STRATEGIC · RESULTS DRIVEN</p>
             <div className="splash-name-line" aria-label="I Shop Marketing">
