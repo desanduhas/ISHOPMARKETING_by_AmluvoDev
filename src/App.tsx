@@ -443,17 +443,6 @@ export default function App() {
         </section>
       </main>
 
-      <a
-        className="whatsapp-fab"
-        href="https://wa.me/94717000779?text=Hello%20ISM%20Team%2C%20I%20would%20like%20to%20discuss%20a%20growth%20project."
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Chat with I Shop Marketing on WhatsApp"
-      >
-        <span>Chat on WhatsApp</span>
-        <img src="/res/img/whatsapp.png" alt="" />
-      </a>
-
       <footer>
         <div className="brand"><span className="brand-mark"><img src={logoSrc} alt="I Shop Marketing (Pvt) Ltd" /></span></div>
         <div className="footer-socials">
