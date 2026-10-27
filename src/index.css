@@ -173,3 +173,12 @@ footer{max-width:1240px;margin:auto;padding:38px 22px 25px;border-top:1px solid 
 .card-bottom h2{font-size:20px;align-items:center;margin-top:2px}
 
 .topbar-splash-hidden{opacity:0;visibility:hidden;transform:translateY(-24px);pointer-events:none}
+
+/* Mobile-only 3D card movement. */
+@keyframes card-mobile-auto-rotate{
+  0%,100%{transform:rotate(-4deg) rotateY(-10deg) translateY(0)}
+  25%{transform:rotate(0deg) rotateY(0deg) translateY(-9px)}
+  50%{transform:rotate(4deg) rotateY(10deg) translateY(-3px)}
+  75%{transform:rotate(0deg) rotateY(0deg) translateY(-11px)}
+}
+@media(max-width:700px){.identity-card{animation:card-mobile-auto-rotate 8s cubic-bezier(.45,0,.55,1) infinite;transform-style:preserve-3d;will-change:transform}}
