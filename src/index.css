@@ -174,11 +174,8 @@ footer{max-width:1240px;margin:auto;padding:38px 22px 25px;border-top:1px solid 
 
 .topbar-splash-hidden{opacity:0;visibility:hidden;transform:translateY(-24px);pointer-events:none}
 
-/* Mobile-only 3D card movement. */
-@keyframes card-mobile-auto-rotate{
-  0%,100%{transform:rotate(-4deg) rotateY(-10deg) translateY(0)}
-  25%{transform:rotate(0deg) rotateY(0deg) translateY(-9px)}
-  50%{transform:rotate(4deg) rotateY(10deg) translateY(-3px)}
-  75%{transform:rotate(0deg) rotateY(0deg) translateY(-11px)}
-}
-@media(max-width:700px){.identity-card{animation:card-mobile-auto-rotate 8s cubic-bezier(.45,0,.55,1) infinite;transform-style:preserve-3d;will-change:transform}}
+/* Seamless mobile capability marquee. */
+.capability-strip{display:block;padding:0;overflow:hidden}.capability-track{width:100%}.capability-group{padding:24px max(24px,calc((100vw - 1240px)/2));display:flex;justify-content:space-between;align-items:center;gap:24px}.capability-clone{display:none}
+@keyframes capability-marquee{to{transform:translateX(calc(-50% - 24px))}}
+@media(max-width:700px){.capability-strip{padding:0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}.capability-track{width:max-content;display:flex;gap:48px;animation:capability-marquee 20s linear infinite;will-change:transform}.capability-group{width:max-content;padding:21px 0;justify-content:flex-start;gap:44px}.capability-group>span{display:none}.capability-clone{display:flex}.capability-strip:hover .capability-track{animation-play-state:paused}}
+@media(prefers-reduced-motion:reduce){.capability-track{animation:none!important}.capability-strip{overflow-x:auto}}

@@ -283,13 +283,24 @@ export default function App() {
           </div>
         </section>
 
-        <div className="capability-strip">
+        <div className="capability-strip" aria-label="I Shop Marketing capabilities">
+          <div className="capability-track">
+            <div className="capability-group">
           <span>STRATEGY TO EXECUTION.</span>
           <b>Meta Ads <i>✳</i></b>
           <b>Google <i>↗</i></b>
           <b>SEO <i>◎</i></b>
           <b>Branding <i>✦</i></b>
           <b>Field Marketing <i>＋</i></b>
+            </div>
+            <div className="capability-group capability-clone" aria-hidden="true">
+              <b>Meta Ads <i>✳</i></b>
+              <b>Google <i>↗</i></b>
+              <b>SEO <i>◉</i></b>
+              <b>Branding <i>✦</i></b>
+              <b>Field Marketing <i>＋</i></b>
+            </div>
+          </div>
         </div>
 
         <section className="proof-strip" aria-label="Company facts">
