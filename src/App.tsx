@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 import {
   ArrowUpRight,
   BriefcaseBusiness,
@@ -99,6 +99,7 @@ const locations = [
 ];
 
 export default function App() {
+  const gyroCardRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [splashVisible, setSplashVisible] = useState(true);
   const [splashExiting, setSplashExiting] = useState(false);
@@ -120,6 +121,92 @@ export default function App() {
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const card = gyroCardRef.current;
+    const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches || navigator.maxTouchPoints > 0;
+    if (!card || !isTouchDevice || !('DeviceOrientationEvent' in window)) return;
+
+    let baselineBeta: number | null = null;
+    let baselineGamma: number | null = null;
+    let currentX = 0;
+    let currentY = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let animationFrame = 0;
+    let listening = false;
+
+    const renderTilt = () => {
+      currentX += (targetX - currentX) * 0.14;
+      currentY += (targetY - currentY) * 0.14;
+      card.style.setProperty('--gyro-x', `${currentX.toFixed(2)}deg`);
+      card.style.setProperty('--gyro-y', `${currentY.toFixed(2)}deg`);
+      if (Math.abs(targetX - currentX) > 0.03 || Math.abs(targetY - currentY) > 0.03) {
+        animationFrame = window.requestAnimationFrame(renderTilt);
+      } else {
+        animationFrame = 0;
+      }
+    };
+
+    const handleOrientation = (event: DeviceOrientationEvent) => {
+      if (event.beta === null || event.gamma === null) return;
+      if (baselineBeta === null || baselineGamma === null) {
+        baselineBeta = event.beta;
+        baselineGamma = event.gamma;
+      }
+      const betaDelta = Math.max(-28, Math.min(28, event.beta - baselineBeta));
+      const gammaDelta = Math.max(-28, Math.min(28, event.gamma - baselineGamma));
+      targetX = -(betaDelta / 28) * 7;
+      targetY = (gammaDelta / 28) * 9;
+      if (!animationFrame) animationFrame = window.requestAnimationFrame(renderTilt);
+    };
+
+    const resetBaseline = () => {
+      baselineBeta = null;
+      baselineGamma = null;
+      targetX = 0;
+      targetY = 0;
+      if (!animationFrame) animationFrame = window.requestAnimationFrame(renderTilt);
+    };
+
+    const startListening = () => {
+      if (listening) return;
+      listening = true;
+      window.addEventListener('deviceorientation', handleOrientation, true);
+    };
+
+    const requestMotionPermission = async () => {
+      const orientationApi = DeviceOrientationEvent as typeof DeviceOrientationEvent & {
+        requestPermission?: () => Promise<'granted' | 'denied'>;
+      };
+      try {
+        if (typeof orientationApi.requestPermission === 'function') {
+          if (await orientationApi.requestPermission() === 'granted') startListening();
+        } else {
+          startListening();
+        }
+      } catch {
+        // The card keeps its normal animation when sensor permission is unavailable.
+      }
+    };
+
+    const orientationApi = DeviceOrientationEvent as typeof DeviceOrientationEvent & {
+      requestPermission?: () => Promise<'granted' | 'denied'>;
+    };
+    if (typeof orientationApi.requestPermission === 'function') {
+      window.addEventListener('pointerdown', requestMotionPermission, { once: true });
+    } else {
+      startListening();
+    }
+    window.addEventListener('orientationchange', resetBaseline);
+
+    return () => {
+      window.removeEventListener('pointerdown', requestMotionPermission);
+      window.removeEventListener('deviceorientation', handleOrientation, true);
+      window.removeEventListener('orientationchange', resetBaseline);
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
+    };
   }, []);
 
   useEffect(() => {
@@ -275,7 +362,8 @@ export default function App() {
             <div className="orbit orbit-one" />
             <div className="orbit orbit-two" />
             <div className="float-tag tag-one"><i /> Brand to business growth</div>
-            <div className="identity-card">
+            <div className="gyro-card" ref={gyroCardRef}>
+              <div className="identity-card">
               <div className="card-top">
                 <span>ISM / 2026</span>
                 <div className="card-hero-logo">
@@ -291,6 +379,7 @@ export default function App() {
                   <span><small>OUR PROMISE</small><b>Always on time</b></span>
                 </div>
                 <div className="card-code">GROWTH → DELIVERED</div>
+              </div>
               </div>
             </div>
             <div className="float-tag tag-two">Performance meets creativity ↗</div>
