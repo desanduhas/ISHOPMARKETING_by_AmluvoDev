@@ -1,0 +1,137 @@
+/* ==========================================================================
+   SRI LANKA VECTOR MAP - PURE BORDERLESS LUXURY MAP (GOLD & BLACK)
+   ========================================================================== */
+
+.sl-map-container {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin: 16px auto 0 0;
+  /* NO BOX / NO BORDER / COMPLETELY TRANSPARENT */
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* SVG Map Canvas */
+.sl-map-svg-wrapper {
+  position: relative;
+  width: 100%;
+  height: clamp(340px, 40vw, 440px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.sl-map-svg {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: block;
+}
+
+/* Island Shape */
+.sl-island-path {
+  fill: #141511;
+  stroke: #c5a059;
+  stroke-width: 1.25;
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 18px rgba(197, 160, 89, 0.2));
+  transition: fill 0.3s ease, stroke 0.3s ease;
+}
+
+.sl-island-path:hover {
+  fill: #181913;
+  stroke: #dec38c;
+}
+
+/* Radar Pulse Waves */
+.sl-pulse-circle {
+  animation: sl-radar 3s infinite ease-out;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.pulse-delay-1 { animation-delay: 0s; }
+.pulse-delay-2 { animation-delay: 0.75s; }
+.pulse-delay-3 { animation-delay: 1.5s; }
+.pulse-delay-4 { animation-delay: 2.25s; }
+
+@keyframes sl-radar {
+  0% { r: 4; opacity: 0.95; stroke-width: 1.4; }
+  100% { r: 20; opacity: 0; stroke-width: 0.4; }
+}
+
+/* City Pin Hotspot */
+.sl-city-pin {
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sl-city-pin:hover {
+  transform: scale(1.15);
+}
+
+.sl-pin-core {
+  fill: #c5a059;
+  stroke: #ffffff;
+  stroke-width: 1.3;
+  filter: drop-shadow(0 0 8px #c5a059);
+  transition: r 0.25s ease, fill 0.25s ease;
+}
+
+.sl-pin-core.is-hq {
+  fill: #ffd978;
+  stroke: #0c0c0b;
+  stroke-width: 1.8;
+  filter: drop-shadow(0 0 12px #ffd978);
+}
+
+/* City Labels */
+.sl-city-label {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  fill: #f5f2eb;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 4px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+}
+
+.sl-city-label.is-hq {
+  fill: #ffd978;
+  font-size: 8.5px;
+}
+
+.sl-city-sublabel {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 6px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  fill: #a39f93;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95);
+  pointer-events: none;
+}
+
+/* Route Connecting Lines */
+.sl-route-line {
+  stroke: rgba(197, 160, 89, 0.45);
+  stroke-dasharray: 3, 3;
+  stroke-width: 0.9;
+  fill: none;
+  animation: sl-dash 24s linear infinite;
+}
+
+@keyframes sl-dash {
+  to { stroke-dashoffset: -100; }
+}
+
+@media (max-width: 600px) {
+  .sl-map-svg-wrapper {
+    height: 320px;
+  }
+}

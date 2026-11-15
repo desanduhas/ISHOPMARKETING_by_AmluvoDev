@@ -1,0 +1,20 @@
+/* Content stays visible by default; GSAP only applies motion when permitted. */
+.scroll-progress { position: fixed; z-index: 80; top: 0; left: 0; right: 0; height: 2px; pointer-events: none; }
+.scroll-progress-fill { display: block; width: 100%; height: 100%; background: #d9ba78; transform: scaleX(0); transform-origin: left center; }
+.page-intro { position: fixed; inset: 0; z-index: 200; display: grid; grid-template-columns: 1fr 1fr; pointer-events: none; }
+.page-intro-panel { display: block; background: #090a08; }
+.page-intro-panel-left { border-right: 1px solid rgba(197,160,89,.12); }
+.page-intro-mark { position: absolute; z-index: 2; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
+.page-intro-mark img { width: 118px; height: auto; }
+.page-intro-mark span { color: #ad9565; font-size: 7px; font-weight: 700; letter-spacing: .2em; }
+.hero-title-line { display: block; overflow: hidden; padding: .12em 0 .16em; margin: -.12em 0 -.16em; perspective: 600px; }
+.hero-title-line + .hero-title-line { margin-top: -.02em; }
+.hero-letter { display: inline-block; transform-origin: center bottom; }
+.hero-title-line em { white-space: nowrap; }
+.hero .visual-frame, .hero .hero-brand-mark { will-change: transform; }
+.company-site .project-card { scroll-margin-top: 100px; }
+@media (prefers-reduced-motion: reduce) {
+  .page-intro { display: none; }
+  .scroll-progress { display: none; }
+  .hero .visual-frame, .hero .hero-brand-mark { will-change: auto; }
+}

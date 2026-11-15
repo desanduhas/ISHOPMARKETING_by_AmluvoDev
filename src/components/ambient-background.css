@@ -1,0 +1,55 @@
+.company-site .ambient-section { position: relative; isolation: isolate; }
+.ambient-section > .shell { position: relative; z-index: 1; }
+.ambient-background { position: absolute; z-index: 0; inset: 0; overflow: hidden; pointer-events: none; user-select: none; contain: paint; }
+.ambient-glow {
+  position: absolute;
+  width: min(95vw, 1300px);
+  height: min(90vw, 1000px);
+  background: radial-gradient(ellipse at center, rgba(197, 160, 89, 0.16), rgba(146, 110, 48, 0.05) 45%, transparent 70%);
+  animation: ambient-drift 24s ease-in-out infinite alternate;
+  animation-play-state: running;
+  filter: blur(50px);
+}
+.ambient-glow-primary { right: -25%; top: -22%; }
+.ambient-glow-secondary { left: -38%; bottom: -45%; opacity: 0.75; animation-name: ambient-drift-secondary; animation-duration: 30s; }
+.ambient-curves {
+  position: absolute;
+  inset: -70px -5%;
+  width: 110%;
+  height: calc(100% + 140px);
+  color: #c5a059;
+  opacity: 0.22;
+  mask-image: linear-gradient(90deg, transparent, #000 35%, #000 90%, transparent);
+}
+.ambient-curves path { stroke: currentColor; stroke-width: 0.9px; }
+.ambient-curves .ambient-curve-faint { opacity: 0.55; }
+.ambient-reverse .ambient-curves { scale: -1 1; }
+.ambient-reverse .ambient-glow-primary { left: -25%; right: auto; top: -30%; }
+.ambient-reverse .ambient-glow-secondary { right: -38%; left: auto; }
+.ambient-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.032;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch' seed='8'/%3E%3C/filter%3E%3Cpath fill='%23fff' filter='url(%23grain)' d='M0 0h160v160H0z'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+@keyframes ambient-drift {
+  from { transform: translate3d(-3%, -2%, 0) scale(1); }
+  to { transform: translate3d(4%, 5%, 0) scale(1.08); }
+}
+@keyframes ambient-drift-secondary {
+  from { transform: translate3d(0, 3%, 0) scale(1.05); }
+  to { transform: translate3d(7%, -4%, 0) scale(0.96); }
+}
+@media (max-width: 800px) {
+  .ambient-curves { opacity: 0.14; }
+  .ambient-glow { width: 140vw; height: 140vw; animation-duration: 30s; }
+  .ambient-glow-primary { right: -80%; top: -10%; }
+  .ambient-reverse .ambient-glow-primary { left: -80%; top: -10%; }
+  .ambient-glow-secondary { display: none; }
+  .ambient-grain { opacity: 0.025; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ambient-glow { animation: none; }
+  .ambient-curves { transform: none !important; }
+}

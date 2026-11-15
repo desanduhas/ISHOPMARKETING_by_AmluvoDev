@@ -1,0 +1,504 @@
+/* ==========================================================================
+   ENVATO ELEMENTS / BLACKHAWAK CLEAN & PROFESSIONAL AGENCY STYLES
+   (Preserving Black & Gold Luxury Theme)
+   ========================================================================== */
+
+/* Top Info Ribbon */
+.top-info-bar {
+  background: #080808;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 11px;
+  color: #a3a096;
+  padding: 8px 0;
+  display: block;
+}
+
+.top-info-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.top-info-left, .top-info-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.top-info-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.top-info-item svg {
+  color: #c5a059;
+}
+
+.top-info-item a:hover {
+  color: #c5a059;
+}
+
+@media (max-width: 900px) {
+  .top-info-bar { display: none; }
+}
+
+/* Partner Trust Marquee */
+.partner-marquee-section {
+  background: #090909;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 22px 0;
+  overflow: hidden;
+}
+
+.partner-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  width: max-content;
+  animation: marquee-scroll 32s linear infinite;
+}
+
+.partner-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.partner-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8f8c82;
+  white-space: nowrap;
+}
+
+.partner-item i {
+  color: #c5a059;
+  font-style: normal;
+}
+
+.partner-item:hover {
+  color: #f5f2eb;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* 4-Step Process Section */
+.process-section {
+  background: #0d0d0b;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 60px;
+}
+
+.process-card {
+  position: relative;
+  background: #131411;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 36px 28px;
+  border-radius: 12px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.process-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(197, 160, 89, 0.45);
+}
+
+.process-number {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 42px;
+  font-weight: 500;
+  color: #c5a059;
+  line-height: 1;
+  margin-bottom: 18px;
+}
+
+.process-card h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 700;
+  color: #f5f2eb;
+  margin-bottom: 10px;
+}
+
+.process-card p {
+  color: #9c998e;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+@media (max-width: 950px) {
+  .process-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+}
+
+@media (max-width: 540px) {
+  .process-grid { grid-template-columns: 1fr; }
+}
+
+/* Brand Video Reel Section */
+.video-reel-section {
+  position: relative;
+  min-height: 540px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-top: 1px solid rgba(197, 160, 89, 0.2);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+  background: #080808;
+}
+
+.video-reel-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.35) contrast(1.15);
+}
+
+.video-reel-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(12, 12, 11, 0.4) 0%, rgba(8, 8, 8, 0.88) 100%);
+}
+
+.video-reel-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 760px;
+  padding: 60px 24px;
+}
+
+.video-reel-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 30px;
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  background: rgba(12, 12, 11, 0.7);
+  color: #c5a059;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.video-reel-content h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(38px, 4.5vw, 64px);
+  font-weight: 400;
+  color: #f5f2eb;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.video-reel-content p {
+  color: #bbb8ae;
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 560px;
+  margin: 0 auto 32px;
+}
+
+/* FAQ Section */
+.faq-section {
+  background: #0e0e0c;
+}
+
+.faq-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 8%;
+  align-items: start;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.faq-item {
+  background: #141511;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.25s ease;
+}
+
+.faq-item.open {
+  border-color: rgba(197, 160, 89, 0.35);
+}
+
+.faq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 24px;
+  background: transparent;
+  border: 0;
+  color: #f5f2eb;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  gap: 16px;
+}
+
+.faq-trigger svg {
+  color: #c5a059;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.open .faq-trigger svg {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 24px 22px;
+  color: #a8a59b;
+  font-size: 12px;
+  line-height: 1.8;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding-top: 14px;
+}
+
+@media (max-width: 900px) {
+  .faq-layout { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* High-Impact CTA Banner */
+.cta-banner-section {
+  background: linear-gradient(135deg, #1c1810 0%, #12120e 50%, #0a0a08 100%);
+  border-top: 1px solid rgba(197, 160, 89, 0.3);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+  padding: 85px 0;
+}
+
+.cta-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.cta-banner-copy h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(38px, 4vw, 56px);
+  color: #f5f2eb;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+.cta-banner-copy p {
+  color: #a8a49a;
+  font-size: 14px;
+  max-width: 520px;
+}
+
+.cta-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-shrink: 0;
+}
+
+.cta-phone-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 26px;
+  border-radius: 8px;
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  background: rgba(197, 160, 89, 0.08);
+  color: #c5a059;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  transition: all 0.25s ease;
+}
+
+.cta-phone-btn:hover {
+  background: #c5a059;
+  color: #111;
+}
+
+@media (max-width: 900px) {
+  .cta-banner-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Service Cards Grid (Envato Style Clean Cards) */
+.envato-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+
+.envato-service-card {
+  position: relative;
+  background: #141511;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 38px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.envato-service-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(197, 160, 89, 0.45);
+  box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.6);
+}
+
+.envato-service-icon-box {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: rgba(197, 160, 89, 0.1);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  color: #c5a059;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.envato-service-card h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 700;
+  color: #f5f2eb;
+  margin-bottom: 12px;
+}
+
+.envato-service-card p {
+  color: #9e9b90;
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+.envato-service-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.envato-service-bullets li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11px;
+  color: #d1cdc2;
+}
+
+.envato-service-bullets li svg {
+  color: #c5a059;
+  flex-shrink: 0;
+}
+
+.envato-service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #c5a059;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: gap 0.2s ease;
+}
+
+.envato-service-link:hover {
+  gap: 13px;
+  color: #f5f2eb;
+}
+
+@media (max-width: 950px) {
+  .envato-services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .envato-services-grid { grid-template-columns: 1fr; }
+}
+
+/* About Us Split Showcase Cards */
+.envato-about-visual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.envato-about-img-box {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(197, 160, 89, 0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  background: #141511;
+}
+
+.envato-about-badge-card {
+  position: absolute;
+  bottom: -20px;
+  right: -15px;
+  background: #171813;
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  border-radius: 12px;
+  padding: 22px 26px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.envato-about-badge-card strong {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 40px;
+  color: #c5a059;
+  line-height: 1;
+}
+
+.envato-about-badge-card span {
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #d1cdc2;
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .envato-about-badge-card {
+    position: static;
+    margin-top: 15px;
+  }
+}
